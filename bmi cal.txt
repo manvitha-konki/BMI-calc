@@ -1,0 +1,63 @@
+#K.Bala Sai Manvitha-CS22B1030
+
+import tkinter as tk
+
+root = tk.Tk()
+
+#.title()-giving title to webpage
+root.title("BMI Calculator")
+
+def calculate():
+    try:
+        height=float(entry1.get())      #.get()-to take input values from user in entry box
+        weight=float(entry2.get())
+        bmi=weight/(height*height)    
+        br=round(bmi,2)
+    except:
+        br="Error"              
+    finally:
+        bmi_label.config(text=f"{br}")
+        
+frame_1=tk.Frame(root)
+frame_1.columnconfigure(0,weight=1)
+frame_1.rowconfigure(0,weight=1)
+frame_1.rowconfigure(1,weight=1)
+frame_1.rowconfigure(2,weight=1)
+frame_1.rowconfigure(3,weight=1)
+frame_1.grid(row=0,column=0,sticky='NEWS')
+
+frame_2=tk.Frame(root)
+frame_2.columnconfigure(1, weight=1)
+frame_2.rowconfigure(0, weight=1)
+frame_2.rowconfigure(1, weight=1)
+frame_2.rowconfigure(2, weight=1)
+frame_2.rowconfigure(3, weight=1)
+
+frame_2.grid(row=0,column=1,sticky='NEWS')
+
+l1=tk.Label(frame_1,text='Height (in Meter)',width=15)
+l1.grid(row=0,column=0)
+
+l2=tk.Label(frame_1,text='Weight (in kg)',width=15)
+l2.grid(row=1,column=0,padx=1,pady=5)
+
+l3=tk.Label(frame_1,text='Your BMI',width=15)
+l3.grid(row=2,column=0,padx=1,pady=5)
+
+l4=tk.Label(frame_1)
+l4.grid(row=3,column=0,padx=1,pady=5)
+
+entry1=tk.Entry(frame_2)
+entry1.grid(row=0,column=1)
+
+entry2=tk.Entry(frame_2)
+entry2.grid(row=1,column=1)
+
+bmi_label=tk.Label(frame_2,bg='white',width=15)
+bmi_label.grid(row=2,column=1)
+
+b1=tk.Button(frame_2,text='Calculate',width=15,command=lambda: calculate())
+b1.grid(row=3,column=1,padx=1,pady=5)
+
+root.mainloop()
+
